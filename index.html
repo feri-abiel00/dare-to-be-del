@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Dare to be DEL — SMA Unggul Del (Angkatan 15)</title>
+  <meta name="description"
+    content="Game 2D troll platformer bertema SMA Unggul Del (Angkatan 15) dengan palet warna Biru, Putih, Ungu, dan Hijau Botol. Kenakan Pin SUD & Batch 15 bersama Luhut dan Devi!">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Main Game Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Ambient Animated Background Grid -->
+  <div class="bg-grid-overlay"></div>
+
+  <!-- ==========================================================================
+       SCREEN 1: HOME / LANDING SCREEN (BERANDA SMA UNGGUL DEL)
+       ========================================================================== -->
+  <section id="home-screen">
+    <!-- Hero Header -->
+    <header class="home-hero">
+      <div class="hero-badges-row">
+        <div class="sud-crest-badge">
+          <span>🏫</span> SMA UNGGUL DEL
+        </div>
+        <div class="batch-15-badge">
+          <span>🟢</span> BATCH 15
+        </div>
+      </div>
+
+      <h1 class="home-title">Dare to be DEL</h1>
+      <p class="home-subtitle">
+        Petualangan 2D hardcore troll platformer anak SMA Unggul Del. Uji kesabaran, refleks, dan logikamu menghadapi rintangan asrama dan sekolah!
+      </p>
+
+      <div class="motto-tag">
+        <span>✨ MarTuhan</span>
+        <span>•</span>
+        <span>🧠 Marroha</span>
+        <span>•</span>
+        <span>💡 Marbisuk</span>
+      </div>
+    </header>
+
+    <!-- Character Selection Section -->
+    <div class="home-section">
+      <div class="section-title-wrap">
+        <h2 class="section-title">
+          <span>🧑‍🎓</span> PILIH KARAKTER SISWA SUD
+        </h2>
+        <span class="section-badge">ANGKATAN 15</span>
+      </div>
+
+      <div class="char-select-grid">
+        <!-- Card 1: Luhut (Siswa SUD) -->
+        <div class="char-card active" id="cardLuhut">
+          <div class="char-avatar-box">
+            <canvas id="canvasLuhutPreview"></canvas>
+          </div>
+          <div class="char-name">👦 Luhut</div>
+          <div class="char-role-badge">
+            <span class="badge-pill sud">Siswa SMA Unggul Del</span>
+            
+          </div>
+          <p class="char-desc">
+            Disiplin, tangguh, dan berani.
+          </p>
+        </div>
+
+        <!-- Card 2: Devi (Siswi SUD) -->
+        <div class="char-card" id="cardDevi">
+          <div class="char-avatar-box">
+            <canvas id="canvasDeviPreview"></canvas>
+          </div>
+          <div class="char-name">👧 Devi</div>
+          <div class="char-role-badge">
+            <span class="badge-pill sud">Siswi SMA Unggul Del</span>
+            
+          </div>
+          <p class="char-desc">
+            Cerdas, gesit, dan ahli sains.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mode Selection Section (Easy / Medium / Hard) -->
+    <div class="home-section">
+      <div class="section-title-wrap">
+        <h2 class="section-title">
+          <span>🎯</span> PILIH TINGKAT KESULITAN
+        </h2>
+        <span class="section-badge">45 LEVEL TOTAL</span>
+      </div>
+
+      <div class="mode-selector-bar">
+        <button class="mode-tab-btn easy active" data-mode="easy" id="btnModeEasy">
+          <span class="mode-icon">🟢</span>
+          <div class="mode-text">
+            <span class="mode-name">EASY</span>
+            <span class="mode-sub">15 Level Pemula</span>
+          </div>
+        </button>
+        <button class="mode-tab-btn medium" data-mode="medium" id="btnModeMedium">
+          <span class="mode-icon">🟡</span>
+          <div class="mode-text">
+            <span class="mode-name">MEDIUM</span>
+            <span class="mode-sub">15 Level Troll Klasik</span>
+          </div>
+        </button>
+        <button class="mode-tab-btn hard" data-mode="hard" id="btnModeHard">
+          <span class="mode-icon">🔴</span>
+          <div class="mode-text">
+            <span class="mode-name">HARD</span>
+            <span class="mode-sub">15 Level Hardcore</span>
+          </div>
+        </button>
+      </div>
+
+      <div class="mode-desc-box" id="modeDescription">
+        🟢 <strong>Mode Easy:</strong> 15 Level ramah pemula, platform stabil, pengenalan Double Jump & rintangan dasar.
+      </div>
+    </div>
+
+    <!-- Level Selection Section -->
+    <div class="home-section">
+      <div class="section-title-wrap">
+        <h2 class="section-title">
+          <span>📑</span> PILIH LEVEL TANTANGAN
+        </h2>
+        <span class="section-badge" id="badgeLevelCount">15 LEVEL</span>
+      </div>
+
+      <div class="home-level-grid" id="homeLevelGrid">
+        <!-- Generated Dynamically by JS -->
+      </div>
+    </div>
+
+    <!-- Home Actions Footer -->
+    <div class="home-action-bar">
+      <button class="btn-start-game" id="btnStartPlay">
+        <span>🎮</span> MULAI PETUALANGAN
+      </button>
+      <button class="btn-reset" id="btnHomeReset" title="Reset Level ke Level 1 dan Reset Waktu ke 00:00.0">
+        <span>🔄</span> RESET LEVEL 1 & WAKTU
+      </button>
+      <button class="btn-how-to" id="btnHowToPlay">
+        <span>📖</span> PANDUAN KONTROL
+      </button>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SCREEN 2: GAMEPLAY VIEWPORT & IN-GAME HUD
+       ========================================================================== -->
+  <main id="game-wrapper" class="hidden">
+    <!-- Header / HUD Bar -->
+    <header class="game-header">
+      <!-- Logo & Active Character -->
+      <div class="logo-container">
+        <div class="logo-badge">🏫</div>
+        <div>
+          <h1 class="logo-text">Dare to be DEL</h1>
+          <div class="logo-subtitle">SMA Unggul Del • Angkatan 15</div>
+        </div>
+      </div>
+
+      <!-- Stats HUD -->
+      <div class="header-stats">
+        <div class="stat-pill player" id="hudPlayerBadge">
+          👦 <span>Luhut [EASY]</span>
+        </div>
+        <div class="stat-pill level">
+          <span>LEVEL</span>
+          <span class="value" id="hudLevel">EASY 1 / 15</span>
+        </div>
+        <div class="stat-pill deaths">
+          <span>💀 MATI</span>
+          <span class="value" id="hudDeaths">0</span>
+        </div>
+        <div class="stat-pill timer">
+          <span>⏱️ WAKTU</span>
+          <span class="value" id="hudTimer">00:00.0</span>
+        </div>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="header-actions">
+        <button class="icon-btn" id="btnHome" title="Kembali ke Beranda" aria-label="Kembali ke Beranda">🏠</button>
+        <button class="icon-btn" id="btnRestart" title="Ulangi Level Ini (R)" aria-label="Ulangi Level Ini">🔄</button>
+        <button class="icon-btn reset-btn" id="btnHudResetAll" title="Reset ke Level 1 & Waktu (00:00.0)" aria-label="Reset ke Level 1 dan Waktu">⏱️🔄</button>
+        <button class="icon-btn" id="btnCharSelect" title="Pilih Karakter" aria-label="Pilih Karakter">🧑‍🎓</button>
+        <button class="icon-btn" id="btnLevelSelect" title="Pilih Level" aria-label="Pilih Level">📑</button>
+        <button class="icon-btn" id="btnSound" title="Suara / Musik" aria-label="Suara / Musik">🔊</button>
+      </div>
+    </header>
+
+    <!-- Main Canvas Viewport -->
+    <div class="canvas-container">
+      <canvas id="gameCanvas"></canvas>
+
+      <!-- Level Start Announcement Banner -->
+      <div class="level-banner" id="levelBanner">
+        <div class="title">Level 1: Gerbang Utama SMA Unggul Del</div>
+        <div class="hint">Jalan santai memasuki gerbang sekolah...</div>
+      </div>
+
+      <!-- Funny Troll / Death Toast Notification -->
+      <div class="troll-toast" id="trollToast">
+        Waduh! Kena jebakan duri!
+      </div>
+
+      <!-- Mobile Touch Controls -->
+      <div class="mobile-controls">
+        <div class="d-pad">
+          <button class="touch-btn" id="btnTouchLeft" aria-label="Kiri">◀</button>
+          <button class="touch-btn" id="btnTouchRight" aria-label="Kanan">▶</button>
+        </div>
+        <div class="action-pad">
+          <button class="touch-btn jump-btn" id="btnTouchJump" aria-label="Lompat (Double Jump)">▲</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       MODALS & OVERLAYS
+       ========================================================================== -->
+
+  <!-- Modal 1: Quick Character Selector (Luhut / Devi) -->
+  <div class="modal-overlay" id="charModal">
+    <div class="modal-box">
+      <button class="modal-close" aria-label="Tutup Modal">&times;</button>
+      <h2 class="modal-title">GANTI KARAKTER SUD</h2>
+      <p class="modal-subtitle">Pilih karakter siswa/i SMA Unggul Del Angkatan 15.</p>
+
+      <!-- Live Canvas Character Preview -->
+      <div class="character-preview-box">
+        <canvas id="charPreviewCanvas"></canvas>
+      </div>
+
+      <!-- Character Buttons -->
+      <div class="character-options">
+        <button class="char-btn active" id="btnCharBoy">👦 Luhut (Siswa SUD 15)</button>
+        <button class="char-btn" id="btnCharGirl">👧 Devi (Siswi SUD 15)</button>
+      </div>
+
+      <button class="btn-primary btn-close-modal">Selesai & Lanjut Main</button>
+    </div>
+  </div>
+
+  <!-- Modal 2: Quick Level Select Grid -->
+  <div class="modal-overlay" id="levelSelectModal">
+    <div class="modal-box">
+      <button class="modal-close" aria-label="Tutup Modal">&times;</button>
+      <h2 class="modal-title">PILIH LEVEL</h2>
+      <p class="modal-subtitle">Pilih tingkat kesulitan dan level petualangan SMA Unggul Del!</p>
+
+      <div class="modal-mode-tabs">
+        <button class="modal-mode-btn easy active" data-mode="easy">🟢 Easy (15)</button>
+        <button class="modal-mode-btn medium" data-mode="medium">🟡 Medium (15)</button>
+        <button class="modal-mode-btn hard" data-mode="hard">🔴 Hard (15)</button>
+      </div>
+
+      <div class="level-grid" id="levelGrid">
+        <!-- Generated by JavaScript -->
+      </div>
+
+      <div style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
+        <button class="btn-reset" id="btnModalReset" style="flex: 1; padding: 10px 16px; font-size: 13px;">🔄 Reset Level 1 & Waktu</button>
+        <button class="btn-secondary btn-close-modal" style="padding: 10px 20px;">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: How to Play / Controls Guide -->
+  <div class="modal-overlay" id="howToModal">
+    <div class="modal-box">
+      <button class="modal-close" aria-label="Tutup Modal">&times;</button>
+      <h2 class="modal-title">📖 PANDUAN KONTROL</h2>
+      <p class="modal-subtitle">Gunakan keyboard atau layar sentuh untuk bernavigasi.</p>
+
+      <div class="instruction-box">
+        <div class="instruction-row">
+          <span>Lari Kiri / Kanan</span>
+          <span class="key-badge">A / D atau ◀ / ▶</span>
+        </div>
+        <div class="instruction-row">
+          <span>Melompat Normal</span>
+          <span class="key-badge">Spasi / W / ▲ (1x)</span>
+        </div>
+        <div class="instruction-row">
+          <span>Double Jump (Lompat Tinggi)</span>
+          <span class="key-badge">Spasi 2x di Udara 🚀</span>
+        </div>
+        <div class="instruction-row">
+          <span>Restart Cepat Level Saat Ini</span>
+          <span class="key-badge">Tombol R</span>
+        </div>
+        <div class="instruction-row">
+          <span>Reset ke Level 1 & Waktu 00:00.0</span>
+          <span class="key-badge">Tombol 🔄 di Beranda/HUD</span>
+        </div>
+        <div class="instruction-row">
+          <span>Mute / Unmute Audio</span>
+          <span class="key-badge">Ikon 🔊 di HUD</span>
+        </div>
+      </div>
+
+      <div class="instruction-box" style="border-color: rgba(16, 185, 129, 0.35); background: rgba(6, 78, 59, 0.2);">
+        <div style="font-weight: 700; color: #34d399; font-size: 13px;">🟢 Ciri Khas Seragam Angkatan 15:</div>
+        <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.4;">
+          Karakter memakai seragam kemeja putih dengan <strong>Pin Emas Berlogo SUD</strong> di dada/saku dan <strong>Batch Lengan Hijau Botol bertuliskan "15"</strong>.
+        </p>
+      </div>
+
+      <button class="btn-primary btn-close-modal">Siap Berpetualang!</button>
+    </div>
+  </div>
+
+  <!-- Modal 4: Victory / Graduation Screen -->
+  <div class="modal-overlay" id="victoryModal">
+    <div class="modal-box">
+      <h2 class="modal-title">🎉 SELAMAT LULUS SMA UNGGUL DEL! 🎉</h2>
+      <div id="victoryModeLabel" style="font-weight: 800; font-size: 14px; color: var(--sud-gold); text-align: center;">Mode EASY Selesai!</div>
+      <p class="modal-subtitle" style="text-align: center;">Selamat Angkatan 15! Kamu berhasil menuntaskan semua 15 ujian di Dare to be DEL!</p>
+
+      <div class="instruction-box" style="text-align: center; margin-bottom: 8px; background: rgba(6, 78, 59, 0.2); border-color: rgba(16, 185, 129, 0.4);">
+        <div style="font-size: 13px; margin-bottom: 6px; color: var(--text-muted);">Total Kematian Terkumpul:</div>
+        <div style="font-size: 32px; font-weight: 900; color: #f43f5e;" id="finalDeaths">0</div>
+        <div style="font-size: 13px; margin-top: 14px; margin-bottom: 4px; color: var(--text-muted);">Total Waktu Speedrun:</div>
+        <div style="font-size: 26px; font-weight: 900; color: var(--sud-bottle-green-bright);" id="finalTime">00:00.0</div>
+      </div>
+
+      <div style="display: flex; gap: 10px;">
+        <button class="btn-primary" id="btnPlayAgain" style="flex: 1;">🏆 Main Lagi dari Level 1</button>
+        <button class="btn-secondary" id="btnVictoryHome">🏠 Beranda</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/sprites.js"></script>
+  <script src="js/levels.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
