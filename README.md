@@ -28,8 +28,8 @@ Pilih karakter favoritmu sebelum memulai petualangan:
 
 | Karakter | Peran | Karakteristik |
 | :---: | :---: | :--- |
-| 🧑‍🎓 **Luhut** | Siswa SMA Unggul Del | Disiplin, tangguh, pantang menyerah, dan berani menghadapi segala jebakan. |
-| 👩‍🎓 **Devi** | Siswi SMA Unggul Del | Cerdas, gesit, analitis, dan ahli dalam memecahkan teka-teki platforming sains. |
+| 🧑‍🎓 **Laut Pangaribuan** | Siswa SMA Unggul Del | Disiplin, tangguh, pantang menyerah, dan berani menghadapi segala jebakan. |
+| 👩‍🎓 **Biru Sinaga** | Siswi SMA Unggul Del | Cerdas, gesit, analitis, dan ahli dalam memecahkan teka-teki platforming sains. |
 
 ---
 

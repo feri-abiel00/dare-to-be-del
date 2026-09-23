@@ -13,7 +13,7 @@ class App {
   constructor() {
     this.engine = null;
     this.currentScreen = 'home'; // 'home' | 'game'
-    this.selectedGender = 'boy'; // 'boy' = Luhut, 'girl' = Devi
+    this.selectedGender = 'boy'; // 'boy' = Laut Pangaribuan, 'girl' = Biru Sinaga
     this.currentMode = 'easy'; // 'easy' | 'medium' | 'hard'
 
     this.selectedLevelIndex = 0;
@@ -322,8 +322,8 @@ class App {
       const isBoy = this.selectedGender === 'boy';
       const modeTag = this.currentMode.toUpperCase();
       elBadge.innerHTML = isBoy 
-        ? `👦 <span>Luhut [${modeTag}]</span>` 
-        : `👧 <span>Devi [${modeTag}]</span>`;
+        ? `👦 <span>Laut Pangaribuan [${modeTag}]</span>` 
+        : `👧 <span>Biru Sinaga [${modeTag}]</span>`;
     }
   }
 

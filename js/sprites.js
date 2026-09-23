@@ -6,14 +6,14 @@
  * - Seragam Putih Abu-abu SMA Unggul Del
  * - Pin Emas Berlogo "SUD" pada saku kemeja kiri
  * - Batch Berwarna Hijau Botol bertuliskan "15" pada lengan kemeja
- * - Karakter Siswa (Luhut) & Siswi (Devi)
+ * - Karakter Siswa (Laut Pangaribuan) & Siswi (Biru Sinaga)
  * - Full States: Idle, Running, Jumping, Falling, Dead/Trolled, and Victory!
  */
 
 class CharacterRenderer {
   constructor() {
-    this.gender = 'boy'; // 'boy' = Luhut, 'girl' = Devi
-    this.playerName = 'Luhut';
+    this.gender = 'boy'; // 'boy' = Laut Pangaribuan, 'girl' = Biru Sinaga
+    this.playerName = 'Laut Pangaribuan';
 
     // Theme Color Palette: Biru, Putih, Ungu, Hijau Botol
     this.colorDelBlue = '#0284c7';
@@ -30,12 +30,12 @@ class CharacterRenderer {
 
   setGender(gender) {
     this.gender = gender;
-    this.playerName = (gender === 'girl') ? 'Devi' : 'Luhut';
+    this.playerName = (gender === 'girl') ? 'Biru Sinaga' : 'Laut Pangaribuan';
   }
 
   setPlayerName(name) {
     this.playerName = name;
-    this.gender = (name.toLowerCase() === 'devi') ? 'girl' : 'boy';
+    this.gender = (name.toLowerCase().includes('biru') || name.toLowerCase().includes('devi') || name.toLowerCase() === 'girl') ? 'girl' : 'boy';
   }
 
   /**
@@ -129,7 +129,7 @@ class CharacterRenderer {
     const whiteSocks = this.colorWhite;
 
     if (isGirl) {
-      // Devi: Rok Abu-abu SMA + Kaki
+      // Biru Sinaga: Rok Abu-abu SMA + Kaki
       // Legs
       ctx.fillStyle = this.skinTone;
       ctx.fillRect(-6, -16, 4, 12 + legOffset1 * 0.4);
@@ -159,7 +159,7 @@ class CharacterRenderer {
       ctx.fillStyle = this.colorDelBlue;
       ctx.fillRect(-12, -13 + bodyBob, 24, 1.5);
     } else {
-      // Luhut: Celana Panjang Abu-abu SMA
+      // Laut Pangaribuan: Celana Panjang Abu-abu SMA
       ctx.fillStyle = pantColor;
       // Left leg
       ctx.beginPath();
@@ -316,9 +316,9 @@ class CharacterRenderer {
       ctx.fillRect(1, -45 + bodyBob, 4, 2);
     }
 
-    // 9. Hair & Identity (Luhut vs Devi)
+    // 9. Hair & Identity (Laut Pangaribuan vs Biru Sinaga)
     if (isGirl) {
-      // Devi (Siswi SUD): Rambut elegan dengan pita Ungu/Hijau Botol
+      // Biru Sinaga (Siswi SUD): Rambut elegan dengan pita Ungu/Hijau Botol
       ctx.fillStyle = '#1e1b4b'; // Dark stylish hair
       // Back Ponytail
       ctx.beginPath();
@@ -351,7 +351,7 @@ class CharacterRenderer {
       ctx.closePath();
       ctx.fill();
     } else {
-      // Luhut (Siswa SUD): Rambut rapi standar kedisiplinan asrama SUD
+      // Laut Pangaribuan (Siswa SUD): Rambut rapi standar kedisiplinan asrama SUD
       ctx.fillStyle = '#090d16'; // Jet black hair
       ctx.beginPath();
       ctx.arc(0, -47 + bodyBob, 9.5, Math.PI * 0.85, Math.PI * 2.1);
